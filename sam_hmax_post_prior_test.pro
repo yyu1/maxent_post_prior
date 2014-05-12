@@ -28,10 +28,10 @@ n_plots = n_elements(train_data.(0))
 
 def_bin_data = read_csv(bin_file)
 def_nbins = n_elements(def_bin_data.(0))
-pdf_2d, train_data.(1), train_data.(2), train_data.(4), def_nbins, grid_width, topx, grid_nx, topy, grid_ny, pdf_out
+pdf_2d, train_data.(1), train_data.(2), train_data.(4), def_nbins, grid_width, topx, grid_nx, topy, grid_ny, pdf_out, min_pdf_points
 
 ;maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, bin_file, pdf_out, min_pdf_points
-maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, bin_file, pdf_out, min_pdf_points
+maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, bin_file, pdf_out
 
 print, !error_state.code
 
