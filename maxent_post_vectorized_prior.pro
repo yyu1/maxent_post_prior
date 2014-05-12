@@ -9,7 +9,7 @@
 ; Version history 
 ; Version 2.0 - uses the procedure combine_prob.pro
 
-PRO maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, def_bin_file, local_pdf, min_pdf_points
+PRO maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, def_bin_file, local_pdf
 
 	;read values from bin file.
 	;format is class name, min bin val, max bin val, npoints, total plots, bin mean
@@ -114,11 +114,6 @@ PRO maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, def_bin_file, loc
 	for i = 0, nClass-1 do begin
 		local_pdf_norm[i,index] /= float(pdf_sum[index])
 	endfor
-	index = where(pdf_sum lt min_pdf_points, count)
-	if (count gt 0) then begin
-		print, 'setting bins to default probability', count
-		local_pdf_norm[*,index] = rebin(classWeights[*],nClass,count)
-	endif
 
 	scale_i = ulong(xdim / pdf_size[1])
 	for j=0UL, n_segments-1 do begin
