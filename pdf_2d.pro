@@ -19,14 +19,15 @@
 ;		nx - number of grid points in the x direction
 ;		ymax - min y coordinate of grid to calculate pdf
 ;		ny - number of grid points in the y direction
+;		min_points - minimum number of points needed, or expand box
 
 ;		output parameters
-;		pdf - (n_cats by nx by ny array of floating point values of normalized probability density values)
+;		pdf - (n_cats by nx by ny array of unsigned long of number of points in each category)
 ;					dimenions are n_cat by nx by ny so that retrieval from memory of pdf for a given x,y is fast
 ;		
 
 
-Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out
+Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out, min_points
 
 	tmp_pdf_count = lonarr(n_cats, nx, ny)
 	pdf_out = ulonarr(n_cats, nx, ny)
@@ -51,17 +52,32 @@ Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out
 
 	for j=0L, ny-1 do begin
 	for i=0L, nx-1 do begin
+		
+		calc_pdf = 1
 
 		min_i = i > 0
 		max_i = (nx-1) < (i+1)
 		min_j = j > 0
 		max_j = (ny-1) < (j+1)
 
-		for jj=min_j, max_j do begin
-		for ii=min_i, max_i do begin
-			pdf_out[*,i,j] += tmp_pdf_count[*,ii,jj]
-		endfor
-		endfor
+		while(calc_pdf) do begin
+			for jj=min_j, max_j do begin
+			for ii=min_i, max_i do begin
+				pdf_out[*,i,j] += tmp_pdf_count[*,ii,jj]
+			endfor
+			endfor
+
+			total_points = total(pdf_out[*,i,j])
+			if (total_points ge min_points) then begin
+				calc_pdf = 0 ;enough points, currently location pdf complete
+			endif else begin
+				;too few points, expand box by 1 in each direction
+				min_i = (i-1) > 0
+				max_i = (nx-1) < (i+2)
+				min_j = (j-1) > 0
+				max_j = (ny-1) < (j+2)
+			endelse
+		endwhile
 
 	endfor
 	endfor
