@@ -51,6 +51,7 @@ Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out
 	;calculate probability densities based on surrounding gridboxes
 
 	for j=0L, ny-1 do begin
+	print, j
 	for i=0L, nx-1 do begin
 		
 		calc_pdf = 1
@@ -72,10 +73,11 @@ Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out
 				calc_pdf = 0 ;enough points, currently location pdf complete
 			endif else begin
 				;too few points, expand box by 1 in each direction
-				min_i = (i-1) > 0
-				max_i = (nx-1) < (i+2)
-				min_j = (j-1) > 0
-				max_j = (ny-1) < (j+2)
+				min_i = (min_i-1) > 0
+				max_i = (nx-1) < (max_i+1)
+				min_j = (min_j-1) > 0
+				max_j = (ny-1) < (max_j+1)
+				pdf_out[*,i,j] = 0UL
 			endelse
 		endwhile
 
