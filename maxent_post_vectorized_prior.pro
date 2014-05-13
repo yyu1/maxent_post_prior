@@ -109,14 +109,16 @@ PRO maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, def_bin_file, loc
 
 	;set up local probabilities
 	pdf_sum = total(local_pdf, 1)
-	local_pdf_norm = local_pdf
+	local_pdf_norm = double(local_pdf)
 	index = where(pdf_sum gt 0, count)
 	for i = 0, nClass-1 do begin
-		local_pdf_norm[i,index] /= float(pdf_sum[index])
+		local_pdf_norm[i,index] /= double(pdf_sum[index])
 	endfor
 
 	scale_i = ulong(xdim / pdf_size[1])
 	for j=0UL, n_segments-1 do begin
+
+		if (j mod 10 eq 0) then print, j
 
 		maxent_prob[*] = 0
 		prior_prob[*] = 0
