@@ -6,7 +6,7 @@ topx = -11119505.1960
 topy = 3335851.5590
 pix_width = 231.65635825
 
-grid_width = 250000.
+grid_width = 100000.
 min_pdf_points = 10000
 
 
@@ -30,9 +30,12 @@ def_bin_data = read_csv(bin_file)
 def_nbins = n_elements(def_bin_data.(0))
 pdf_2d, train_data.(1), train_data.(2), train_data.(4), def_nbins, grid_width, topx, grid_nx, topy, grid_ny, pdf_out, min_pdf_points
 
+print, 'Starting probability aggregation...', systime()
 ;maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, bin_file, pdf_out, min_pdf_points
 maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, bin_file, pdf_out
 
 print, !error_state.code
+
+print, 'Done!', systime()
 
 end
