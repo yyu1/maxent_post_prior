@@ -115,7 +115,7 @@ PRO maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, def_bin_file, loc
 		local_pdf_norm[i,index] /= double(pdf_sum[index])
 	endfor
 
-	scale_i = ulong(xdim / pdf_size[1])
+	scale_i = ulong(xdim / pdf_size[2])
 	for j=0UL, n_segments-1 do begin
 
 		if (j mod 10 eq 0) then print, j
@@ -137,8 +137,8 @@ PRO maxent_post_vectorized_prior, xdim, ydim, in_dir, out_dir, def_bin_file, loc
 		;create arrays for prior probabilities and mean values
 		;print, 'creating prior arrays...'
 
-		prob_j = ulong(float(j)/float(n_segments) * float(pdf_size[2]))
-		for i=0, pdf_size[1]-1 do begin
+		prob_j = ulong(float(j)/float(n_segments) * float(pdf_size[3]))
+		for i=0, pdf_size[2]-1 do begin
 			max_i = ((i+1)*scale_i-1) < (xdim-1)
 			prior_prob[i*scale_i : max_i, *] = rebin(reform(local_pdf_norm[*,i,prob_j],1,nClass),(max_i-i*scale_i+1), nClass)
 		endfor
