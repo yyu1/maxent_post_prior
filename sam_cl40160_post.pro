@@ -1,3 +1,4 @@
+pro sam_cl40160_post
 
 xdim = 38400ULL
 ydim = 43200ULL
@@ -10,10 +11,10 @@ grid_width = 50000. ;100km
 min_pdf_points = 5000
 
 
-train_file = '~/global_250m/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
+train_file = '~/global_250m/samples/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
 in_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160'
 out_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160/results'
-bin_file = '~/global_250m/hlorey_train_v2/bin_hlorey_sam_v1_cl40160.csv'
+bin_file = '~/global_250m/samples/hlorey_train_v2/bin_hlorey_sam_v1_cl40160.csv'
 
 spawn, 'mkdir ' + out_dir
 spawn, 'find ' + in_dir + ' -name "*.gz" | parallel -j 10 gunzip {}'
@@ -41,10 +42,10 @@ endif
 
 
 
-train_file = '~/global_250m/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
+train_file = '~/global_250m/samples/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
 in_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160_nomodis'
 out_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160_nomodis/results'
-bin_file = '~/global_250m/hlorey_train_v2/bin_hlorey_sam_v1_cl40160.csv'
+bin_file = '~/global_250m/samples/hlorey_train_v2/bin_hlorey_sam_v1_cl40160.csv'
 
 spawn, 'mkdir ' + out_dir
 spawn, 'find ' + in_dir + ' -name "*.gz" | parallel -j 10 gunzip {}'
