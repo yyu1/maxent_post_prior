@@ -6,13 +6,13 @@ topx = -11119505.1960
 topy = 3335851.5590
 pix_width = 231.65635825
 
-grid_width = 100000. ;100km
+grid_width = 50000. ;100km
 min_pdf_points = 5000
 
 
 train_file = '~/global_250m/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
-in_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40_160'
-out_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40_160/results'
+in_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160'
+out_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160/results'
 bin_file = '~/global_250m/hlorey_train_v2/bin_hlorey_sam_v1_cl40160.csv'
 
 spawn, 'mkdir ' + out_dir
@@ -42,8 +42,8 @@ endif
 
 
 train_file = '~/global_250m/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
-in_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40_160_nomodis'
-out_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40_160_nomodis/results'
+in_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160_nomodis'
+out_dir = '/nobackup/yyu1/global_250m_output/sam/cl_40160_nomodis/results'
 bin_file = '~/global_250m/hlorey_train_v2/bin_hlorey_sam_v1_cl40160.csv'
 
 spawn, 'mkdir ' + out_dir
