@@ -29,6 +29,9 @@
 
 Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out, min_points
 
+	nx = ulong(nx)  ;prevent overflow when multiplying
+	ny = ulong(ny)  ;prevent overflow when multiplying
+
 	tmp_pdf_count = lonarr(n_cats, nx, ny)
 	pdf_out = ulonarr(n_cats, nx, ny)
 
@@ -42,7 +45,7 @@ Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out
 			ycoord_sc = ulong((ymax - ycoord[index])/width)
 
 			coord_transformed = xcoord_sc + nx*ycoord_sc
-
+			
 			tmp_pdf_count[i,*,*] = histogram(coord_transformed, min=0, max=(nx*ny)-1)
 			
 		endif
