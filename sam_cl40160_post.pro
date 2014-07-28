@@ -7,8 +7,8 @@ topx = -11119505.1960
 topy = 3335851.5590
 pix_width = 231.65635825
 
-grid_width = 50000. ;100km
-min_pdf_points = 5000
+grid_width = 100000. ;100km
+min_pdf_points = 10000
 
 
 train_file = '~/global_250m/samples/hlorey_train_v2/train_hlorey_sam_v1_cl40160_wbin.csv'
