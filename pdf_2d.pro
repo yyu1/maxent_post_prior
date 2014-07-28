@@ -59,10 +59,10 @@ Pro pdf_2d, xcoord, ycoord, category, n_cats, width, xmin, nx, ymax, ny, pdf_out
 		
 		calc_pdf = 1
 
-		min_i = i-1 > 0
-		max_i = (nx-1) < (i+1)
-		min_j = j-1 > 0
-		max_j = (ny-1) < (j+1)
+		min_i = i-2 > 0
+		max_i = (nx-1) < (i+2)
+		min_j = j-2 > 0
+		max_j = (ny-1) < (j+2)
 
 		while(calc_pdf) do begin
 			for jj=min_j, max_j do begin
