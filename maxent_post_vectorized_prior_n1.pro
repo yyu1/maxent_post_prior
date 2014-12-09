@@ -32,7 +32,7 @@ PRO maxent_post_vectorized_prior_n1, xdim, ydim, in_dir, out_dir, def_bin_file, 
 	pdf_size = size(local_pdf)
 	
 	;--------------------------------------------
-	journal, out_dir+'/maxent_post_n3.log'
+	journal, out_dir+'/maxent_post_n1.log'
 	
 	in_files=strarr(nClass)
 	
@@ -99,9 +99,9 @@ PRO maxent_post_vectorized_prior_n1, xdim, ydim, in_dir, out_dir, def_bin_file, 
 	endfor
 	
 	
-	openw, 1, out_dir + '/maxent_value_n3_weight4.flt'
+	openw, 1, out_dir + '/maxent_value_n1_weight4.flt'
 	outLuns[0] = 1
-	openw, 2, out_dir + '/maxent_error_n3_weight4.flt'
+	openw, 2, out_dir + '/maxent_error_n1_weight4.flt'
 	outLuns[1] = 2
 	
 	print, 'creating maps....'
