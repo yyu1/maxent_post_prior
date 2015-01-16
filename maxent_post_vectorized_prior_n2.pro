@@ -131,6 +131,9 @@ PRO maxent_post_vectorized_prior_n2, xdim, ydim, in_dir, out_dir, def_bin_file, 
 		for n=0, nClass-1 do begin
 			tmpLun = inLuns[n]
 			readu, tmpLun, tmp_flt_line
+			;set masked areas to 0
+			tmp_flt_line = tmp_flt_line > 0
+			;normalize
 			maxent_prob[*,n] = tmp_flt_line / PTotal[n]
 		endfor
 
