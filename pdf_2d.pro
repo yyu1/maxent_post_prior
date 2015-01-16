@@ -2,7 +2,7 @@
 ;on a 2D grid and their associated z categories.
 ;points are placed into square grids of width specified by the "width" parameter
 ;the probability density for each grid box is determined by the points located within
-;a 3x3 grid spacing centered around that grid box
+;a 5x5 grid spacing centered around that grid box
 
 ;Author - Yifan Yu
 ;Version 1.0
